@@ -8,22 +8,18 @@
 
 目前追踪 [@aleabitoreddit](https://x.com/aleabitoreddit) (Serenity)，自报 YTD 4500%+ 的 AI/半导体供应链分析师。但框架不绑定任何 KOL——改 `users.json` 和 agent prompt 即可切人。
 
-## 为什么做这个
+## 核心特性
 
-已经有一个 [Serenity 项目](https://github.com/haskaomni/serenity)，做的是正则数 `$TICKER` 出现次数、拼 Yahoo Finance 行情、画个静态页面。那是推文抓取器。这是信号蒸馏系统。
-
-| 能力 | 推文抓取器 | 本项目 |
-|---|---|---|
-| 数据采集 | 手动从 DevTools 复制 curl | 每日 cron 自动 + headless 浏览器 |
-| 信号提取 | 正则数 `$TICKER` 出现次数 → 0-100 分 | 6 级仓位态度（新开/加码/持有/减仓/反手/静默） |
-| 预测追踪 | - | 券商 API 实时核验，四档判定（✅兑现/❌落空/⏳待核/🚫不可证伪） |
-| 可信度审计 | - | LEAPs 杠杆分解、归因稳定性分析、自报 vs 可审计口径切分 |
-| 产业链映射 | - | 每个持仓挂到供应链环节（上游 chokepoint → 晶圆厂 → 封装 → 终端） |
-| 盘中提醒 | - | 每 30 分钟 flash 轮询：廉价关键词预筛（0 LLM token）→ 命中才起 LLM 精确判断 |
-| 组合交叉 | - | 券商 MCP 实时持仓 + R2 进场质量评分（只买暴跌不追狂热） |
-| 自主 agent | - | Claude Code worker + 协作写锁 + prompt injection 防护 |
-| 交付方式 | 静态网页 | Telegram 推送 + Obsidian wiki + JSON dashboard feed |
-| 安全控制 | 无 | 下单工具剥离、flock 单实例、原子写入、stale 锁清理 |
+- **6 级仓位态度追踪** — 不只是"提到了 $TICKER"，而是 *新开 / 加码 / 持有 / 减仓 / 反手 / 静默*，附 thesis 和工具类型
+- **预测对账** — KOL 的每个口径都有判定：✅兑现 / ❌落空 / ⏳待核 / 🚫不可证伪。自报聚合收益一律标不可证伪；单票口径通过实时行情核验
+- **产业链映射** — 每个持仓挂到供应链环节（上游 chokepoint → 晶圆厂 → 封装 → 系统集成 → 终端）
+- **盘中 flash 提醒** — 每 30 分钟轮询，两级管线：廉价关键词预筛（安静日 0 LLM token）→ 命中才起 LLM 精确判定
+- **多 LLM 后端** — 支持 Claude API / OpenAI / 任意 OpenAI 兼容端点，零 npm 依赖
+- **全自动 cron 蒸馏** — headless 推文同步、游标增量蒸馏、原子 JSON 持久化、git commit + push、Telegram 简报
+- **可信度审计框架** — LEAPs 杠杆分解、归因稳定性分析、可验证选股 vs 不可审计聚合收益切分
+- **组合交叉** — 将 KOL 信号叠加到你自己的持仓上，附进场质量评分（Yahoo Finance 免费行情，或券商 MCP 实时数据）
+- **Prompt injection 防护** — 推文内容当数据读不当指令。system prompt 明确防护注入模式
+- **Obsidian wiki 集成** — 活账本 + 周快照 + 实体画像，结构化 markdown + wikilinks
 
 ## 架构
 

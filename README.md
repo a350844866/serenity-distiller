@@ -8,22 +8,18 @@ An autonomous pipeline that distills a financial KOL's X (Twitter) stream into a
 
 Built for [@aleabitoreddit](https://x.com/aleabitoreddit) (Serenity), the AI/semiconductor supply chain analyst with a self-reported 4500%+ YTD return. But the framework is KOL-agnostic — swap `users.json` and the agent prompts to track anyone.
 
-## Why this exists
+## Key Features
 
-There's [another Serenity project](https://github.com/haskaomni/serenity) that counts `$TICKER` mentions and plots Yahoo Finance prices. That's a tweet scraper. This is a signal intelligence system.
-
-| Capability | Tweet scraper | This project |
-|---|---|---|
-| Data collection | Manual curl paste from DevTools | Automated daily cron + headless browser |
-| Signal extraction | Regex `$TICKER` mention count → 0-100 score | 6-level stance tracking (new/adding/holding/trimming/reversing/silent) |
-| Prediction tracking | - | Live verification via broker API with verdicts (confirmed/missed/pending/unfalsifiable) |
-| Credibility audit | - | LEAPs leverage decomposition, attribution stability analysis, self-reported vs auditable separation |
-| Industry chain mapping | - | Position mapped to supply chain segment (upstream chokepoint → foundry → packaging → endpoint) |
-| Intraday alerts | - | 30-min flash polling: cheap keyword pre-filter (0 LLM tokens) → LLM precision gate (only on hit) |
-| Portfolio cross-reference | - | Broker MCP live positions + R2 entry quality scoring (buy dips not euphoria) |
-| Autonomous agents | - | Claude Code workers with cooperative vault write-lock + prompt injection guards |
-| Delivery | Static web dashboard | Telegram push + Obsidian wiki + JSON dashboard feed |
-| Safety controls | None | No-trade tool stripping, flock single-flight, atomic writes, stale-lock cleanup |
+- **6-level stance tracking** — not just "mentioned $TICKER", but *new / adding / holding / trimming / reversing / silent* with thesis and instrument type
+- **Prediction accountability** — every KOL claim gets a verdict: ✅ confirmed / ❌ missed / ⏳ pending / 🚫 unfalsifiable. Self-reported aggregate returns are always marked unfalsifiable; single-stock claims are verified against live market data
+- **Industry chain mapping** — each position is mapped to its supply chain segment (upstream chokepoint → foundry → packaging → system integration → endpoint)
+- **Intraday flash alerts** — 30-min polling with a two-stage pipeline: cheap keyword pre-filter (zero LLM tokens on quiet polls) → LLM precision gate (only when the detector fires)
+- **Multi-provider LLM** — works with Claude API, OpenAI, or any OpenAI-compatible endpoint. Zero npm dependencies
+- **Automated daily cron** — headless tweet sync, cursor-based incremental distillation, atomic JSON persistence, git commit + push, Telegram briefing
+- **Credibility audit framework** — LEAPs leverage decomposition, attribution stability analysis, separating verifiable stock picks from unauditable aggregate returns
+- **Portfolio cross-reference** — overlay KOL signals onto your own positions with entry quality scoring (Yahoo Finance free tier, or broker MCP for live data)
+- **Prompt injection defense** — tweet content is read as data, never as instructions. System prompts explicitly guard against injection patterns
+- **Obsidian wiki integration** — living ledger + weekly snapshots + entity profiles as structured markdown with wikilinks
 
 ## Architecture
 
