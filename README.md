@@ -1,5 +1,7 @@
 # Serenity Distiller
 
+[中文文档](README.zh-CN.md)
+
 **From tweet scraping to financial intelligence distillation.**
 
 An autonomous pipeline that distills a financial KOL's X (Twitter) stream into a living accountability ledger — tracking positions with 6-level stance classification, verifying predictions against live broker data, mapping industry chain positions, and pushing Telegram briefings. Powered by Claude Code agents running on cron.

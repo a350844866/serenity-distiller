@@ -1,5 +1,7 @@
 # Serenity Distiller
 
+[English](README.md)
+
 **从推文抓取到金融信号蒸馏。**
 
 一套自主运行的管线，把金融 KOL 的 X (Twitter) 推文流蒸馏成**活账本**——用 6 级仓位态度分类追踪持仓、通过券商 API 实时核验预测、映射产业链定位、推送 Telegram 简报。由 Claude Code agent 以 cron 驱动全自动运行。
