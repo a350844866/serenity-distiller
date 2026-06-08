@@ -1,0 +1,10 @@
+.env
+*.log
+last-status.json
+flash-state.json
+flash-candidates.json
+flash-result.json
+.flash.lock
+.flash-detector-fail.stamp
+.sync.lock
+node_modules/

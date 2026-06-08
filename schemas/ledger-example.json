@@ -1,0 +1,52 @@
+{
+  "updated": "2026-01-15",
+  "last_distilled_ts": "2026-01-15T12:00:00.000Z",
+  "self_reported": { "ytd_pct": 500, "two_year_pct": 2000, "as_of": "2026-01-15" },
+  "positions": [
+    {
+      "ticker": "EXAMPLE",
+      "name": "Example Corp",
+      "chain": "upstream chokepoint",
+      "stance": "adding",
+      "thesis": "sole-source supplier; self-reported 3x from thesis entry",
+      "instrument": "shares + LEAPs",
+      "last_mention": "2026-01-15",
+      "status": "active"
+    },
+    {
+      "ticker": "TRIMMED",
+      "name": "Trimmed Inc",
+      "chain": "downstream",
+      "stance": "trimming",
+      "thesis": "model error on ASP; reducing concentration",
+      "instrument": "shares",
+      "last_mention": "2026-01-10",
+      "status": "trimmed"
+    }
+  ],
+  "predictions": [
+    {
+      "date": "2026-01-10",
+      "claim": "$EXAMPLE $50 to $150",
+      "falsifiable": "price verifiable",
+      "verdict": "confirmed",
+      "due": null,
+      "note": "verified via broker API live data"
+    },
+    {
+      "date": "2026-01-15",
+      "claim": "YTD 500%",
+      "falsifiable": "not independently auditable",
+      "verdict": "unfalsifiable",
+      "due": null,
+      "note": "LEAPs leverage amplification; platform-reported, not audited NAV"
+    }
+  ],
+  "catalysts": [
+    {
+      "date": "2026-Q2",
+      "event": "Revenue inflection earnings report",
+      "chain": "$EXAMPLE"
+    }
+  ]
+}
